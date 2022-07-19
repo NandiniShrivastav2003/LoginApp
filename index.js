@@ -4,10 +4,14 @@ const app=express();
 const db=require('../LoginSystem/config/mongoose');
 const mongoose = require('mongoose');
 const user=require('../LoginSystem/models/user');
+const cookieParser=require('cookie-parser');
 //using express.urlencoded make password field to read without making it undefined.
+
+  app.use(cookieParser());
+  
 app.use(express.urlencoded({
-    extended: true
-  }));
+  extended: true
+}));
 app.use(express.static('public'));
 
 app.set('view engine','ejs');
